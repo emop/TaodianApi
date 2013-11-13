@@ -34,9 +34,11 @@ import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
-//import org.emop.monitor.Benchmark;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+
+import com.taodian.api.monitor.Benchmark;
+//import org.emop.monitor.Benchmark;
 
 public class HTTPClient {
 	private Log log = LogFactory.getLog("com.taodian.emop.http");
@@ -126,7 +128,7 @@ public class HTTPClient {
 		HttpResponse response = null;
 		List<NameValuePair> nameValuePairs = null;
 		
-		//Benchmark mark = Benchmark.start(Benchmark.HTTP_REQUEST);
+		Benchmark mark = Benchmark.start(Benchmark.HTTP_REQUEST);
 		HTTPResult result = new HTTPResult();		
 		HttpPost httppost = new HttpPost(url);
 		
@@ -148,7 +150,7 @@ public class HTTPClient {
 	        if(log.isDebugEnabled()){
 	        	log.debug("Post Request:" + query.toString());
 	        }
-	        //mark.attachObject(query.toString());
+	        mark.attachObject(query.toString());
 	        
 	    	if(nameValuePairs != null){
 	    		UrlEncodedFormEntity entity = new UrlEncodedFormEntity(nameValuePairs, "UTF-8");
@@ -188,7 +190,7 @@ public class HTTPClient {
 					log.error(e, e);
 				}
 			}
-			//mark.done();
+			mark.done();
 		}
 		return result;
 	}
