@@ -162,10 +162,10 @@ public class HTTPClient {
 		    		reader = new InputStreamReader(response.getEntity().getContent(), 
 		    				"UTF-8");
 		    		result.json = (JSONObject)JSONValue.parse(reader);
-		    		if(log.isDebugEnabled() && result.json != null){
-		    			log.debug("response json object:" + result.json.toJSONString());
-		    		}else {
+		    		if(result.json == null){
 		    			log.warn("Failed to parse result as JSON object.");
+		    		}else if(log.isDebugEnabled()){
+		    			log.debug("resp:" + result.json.toJSONString());
 		    		}
 		    		if(result.json != null){
 		    			result.isOK = true;
