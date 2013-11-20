@@ -27,6 +27,7 @@ public class HTTPResult {
 					break;
 				}
 				o = v.get(k);
+				if(o == null)break;
 				if(o instanceof JSONObject){
 					v = (JSONObject)o;
 				}else{
@@ -48,6 +49,7 @@ public class HTTPResult {
 					break;
 				}
 				o = v.get(k);
+				if(o == null) break;
 				if(o instanceof JSONObject){
 					v = (JSONObject)o;
 					data = v;

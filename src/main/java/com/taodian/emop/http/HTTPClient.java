@@ -62,11 +62,11 @@ public class HTTPClient {
 
 		PoolingClientConnectionManager cm = new PoolingClientConnectionManager(schemeRegistry);
 		// Increase max total connection to 200
-		cm.setMaxTotal(50);
+		cm.setMaxTotal(300);
 		// Increase default max connection per route to 20
-		cm.setDefaultMaxPerRoute(20);
+		cm.setDefaultMaxPerRoute(100);
 		
-		client.httpclient = new DefaultHttpClient(cm);
+		//client.httpclient = new DefaultHttpClient(cm);
 
 		client.httpclient = new DefaultHttpClient(cm);
 		HttpParams param = client.httpclient.getParams();
