@@ -23,14 +23,20 @@ public class TaodianApi {
 	public String appSecret = "";
 	private DateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 	
-	private HTTPClient http = HTTPClient.create();
-	
+	private HTTPClient http = null;
+
 	public TaodianApi(String appKey, String secret, String apiUrl){
+		this(appKey, secret, apiUrl, "apache");
+	}
+	
+	public TaodianApi(String appKey, String secret, String apiUrl, String client){
 		this.appKey = appKey;
 		this.appSecret = secret;
 		if(apiUrl != null && apiUrl.length() > 0){
 			apiRoute = apiUrl;
 		}
+		
+		http = HTTPClient.create(client);
 	}
 	
 	public HTTPResult call(String name, Map<String, Object> param){
