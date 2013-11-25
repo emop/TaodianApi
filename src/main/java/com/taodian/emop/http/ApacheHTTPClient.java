@@ -68,8 +68,8 @@ public class ApacheHTTPClient extends HTTPClient{
 
 		client.httpclient = new DefaultHttpClient(cm);
 		HttpParams param = client.httpclient.getParams();
-		param.setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 3 * 60 * 1000);
-		param.setParameter(CoreConnectionPNames.SO_TIMEOUT, 3 * 60 * 1000);
+		param.setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 30 * 1000);
+		param.setParameter(CoreConnectionPNames.SO_TIMEOUT, 30 * 1000);
 		
 		client.supportGzip();
 		

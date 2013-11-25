@@ -119,7 +119,10 @@ public class SimpleHttpClient extends HTTPClient{
 	}
 		
 	private void createSocket() throws IOException{
-		 conn = this.requestURL.openConnection();
+		conn = this.requestURL.openConnection();
+		conn.setConnectTimeout(1000 * 30);
+		conn.setReadTimeout(1000 * 30);
+			
 		conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 		conn.setDoOutput(true);
 		out = conn.getOutputStream(); //new PrintWriter(buffer);
